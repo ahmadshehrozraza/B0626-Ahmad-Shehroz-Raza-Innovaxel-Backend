@@ -2,7 +2,6 @@
 GET http://localhost:3000/
 
 
-
 ### Create Event 1
 POST http://localhost:3000/api/events
 Content-Type: application/json
@@ -42,10 +41,6 @@ GET http://localhost:3000/api/events
 
 ### Get Events Sorted by Date
 GET http://localhost:3000/api/events?sort=date
-
-
-### Get Upcoming Events Only
-GET http://localhost:3000/api/events?upcoming=true
 
 
 ### Get Single Event
