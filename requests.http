@@ -1,0 +1,212 @@
+### Welcome
+GET http://localhost:3000/
+
+
+
+### Create Event 1
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+  "name": "UOG Software Engineering Society Hackathon",
+  "totalSeats": 3,
+  "eventDate": "2026-09-10"
+}
+
+
+### Create Event 2
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+  "name": "UOG Debating Society Championship",
+  "totalSeats": 5,
+  "eventDate": "2026-11-20"
+}
+
+
+### Create Event 3
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+  "name": "UOG Annual Sports Gala",
+  "totalSeats": 10,
+  "eventDate": "2027-02-20"
+}
+
+
+### Get All Events
+GET http://localhost:3000/api/events
+
+
+### Get Events Sorted by Date
+GET http://localhost:3000/api/events?sort=date
+
+
+### Get Upcoming Events Only
+GET http://localhost:3000/api/events?upcoming=true
+
+
+### Get Single Event
+GET http://localhost:3000/api/events/1
+
+
+### Error - Event Not Found
+GET http://localhost:3000/api/events/999
+
+
+### Error - Past Date
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+  "name": "Old Event",
+  "totalSeats": 10,
+  "eventDate": "2020-01-01"
+}
+
+
+### Error - Duplicate Event Name
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+  "name": "UOG Software Engineering Society Hackathon",
+  "totalSeats": 10,
+  "eventDate": "2027-01-01"
+}
+
+
+### Error - Zero Seats
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+  "name": "Bad Event",
+  "totalSeats": 0,
+  "eventDate": "2027-01-01"
+}
+
+
+### Error - Negative Seats
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+  "name": "Bad Event",
+  "totalSeats": -5,
+  "eventDate": "2027-01-01"
+}
+
+
+### Update Event
+PUT http://localhost:3000/api/events/1
+Content-Type: application/json
+
+{
+  "name": "UOG SE Society Hackathon 2026",
+  "totalSeats": 10
+}
+
+
+### Delete Event (Event 3 - No Registrations)
+DELETE http://localhost:3000/api/events/3
+
+
+### Register User 1
+POST http://localhost:3000/api/registrations
+Content-Type: application/json
+
+{
+  "userName": "Ahmad",
+  "eventId": 1
+}
+
+
+### Register User 2
+POST http://localhost:3000/api/registrations
+Content-Type: application/json
+
+{
+  "userName": "Ali",
+  "eventId": 1
+}
+
+
+### Register User 3 - Event Full (3 seats only)
+POST http://localhost:3000/api/registrations
+Content-Type: application/json
+
+{
+  "userName": "Sara",
+  "eventId": 1
+}
+
+
+### Register User 4 - Should Fail (Event Full)
+POST http://localhost:3000/api/registrations
+Content-Type: application/json
+
+{
+  "userName": "Usman",
+  "eventId": 1
+}
+
+
+### Duplicate Registration - Should Fail
+POST http://localhost:3000/api/registrations
+Content-Type: application/json
+
+{
+  "userName": "Ahmad",
+  "eventId": 1
+}
+
+
+### Error - Event Not Found
+POST http://localhost:3000/api/registrations
+Content-Type: application/json
+
+{
+  "userName": "Ahmad",
+  "eventId": 999
+}
+
+
+### View Active Registrations for Event 1
+GET http://localhost:3000/api/registrations/event/1
+
+
+### Cancel Registration
+DELETE http://localhost:3000/api/registrations/cancel
+Content-Type: application/json
+
+{
+  "userName": "Ahmad",
+  "eventId": 1
+}
+
+
+### Cancel Already Cancelled - Should Fail
+DELETE http://localhost:3000/api/registrations/cancel
+Content-Type: application/json
+
+{
+  "userName": "Ahmad",
+  "eventId": 1
+}
+
+
+### Re-register After Cancel - Should Succeed
+POST http://localhost:3000/api/registrations
+Content-Type: application/json
+
+{
+  "userName": "Ahmad",
+  "eventId": 1
+}
+
+
+### View Active Registrations After Re-register
+GET http://localhost:3000/api/registrations/event/1
