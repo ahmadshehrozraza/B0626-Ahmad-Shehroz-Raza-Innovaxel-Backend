@@ -2,6 +2,10 @@
 
 A RESTful API for an Event Registration System built with Node.js, Express, Prisma ORM, and SQLite. This backend system is designed to handle high-concurrency event registrations while strictly preventing race conditions and overbooking.
 
+## 🎥 Demo & Explanation Video
+**[Click here to watch the 5-minute API explanation and race-condition handling demo]
+(https://drive.google.com/file/d/1qYNbdLAAMVpQ6FRhvhKIFPL0XQ6nL63A/view?usp=sharing)**
+
 ## Tech Stack
 
 - **Runtime**: Node.js (ESM)

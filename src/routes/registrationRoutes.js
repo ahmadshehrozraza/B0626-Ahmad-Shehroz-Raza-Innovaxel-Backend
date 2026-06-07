@@ -4,7 +4,6 @@ import prisma from '../db.js'
 const router = Router()
 
 
-
 router.post('/', async (req, res) => {
   const { userName, eventId } = req.body
 
@@ -111,7 +110,6 @@ router.post('/', async (req, res) => {
 })
 
 
-
 router.delete('/cancel', async (req, res) => {
   const userName = req.body.userName || req.query.userName
   const eventId  = req.body.eventId  || req.query.eventId
@@ -168,7 +166,6 @@ router.delete('/cancel', async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' })
   }
 })
-
 
 
 router.get('/event/:eventId', async (req, res) => {

@@ -91,8 +91,6 @@ router.get('/', async (req, res) => {
 })
 
 
-
-
 router.get('/:id', async (req, res) => {
   const eventId = parseInt(req.params.id)
 
@@ -134,8 +132,6 @@ router.get('/:id', async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' })
   }
 })
-
-
 
 
 router.put('/:id', async (req, res) => {
@@ -201,7 +197,6 @@ router.put('/:id', async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' })
   }
 })
-
 
 
 router.delete('/:id', async (req, res) => {
